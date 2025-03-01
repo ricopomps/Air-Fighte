@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f737858aecb49f64fa691f3a66e051d6, type: 3}
+  m_Name: BipolarGreen
+  m_EditorClassIdentifier: 
+  EnemyPrefab: {fileID: 429011540597766212, guid: 33c9b3043464344408b0df681735234c, type: 3}
+  WeaponPrefab: {fileID: 0}
+  Speed: 2
