@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: -5281336902187416807}
   - component: {fileID: -4921597130270498544}
   - component: {fileID: 5875196593119827788}
+  - component: {fileID: 918110708164412983}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -184,9 +185,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dcde01938c5ab44e917b6a13bcdd1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponStrategy: {fileID: 11400000, guid: 15d31934a8987f842a17aef4d443bef5, type: 2}
+  WeaponStrategy: {fileID: 11400000, guid: 2fabc935bcf9dfe4e98644f59d9f601f, type: 2}
   FirePoint: {fileID: 8048292718058336763}
   Layer: 7
+--- !u!114 &918110708164412983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429011540597766212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9adf757baa9ca3d48b82a053e006979f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 10
 --- !u!1 &1197227943950692215
 GameObject:
   m_ObjectHideFlags: 0
