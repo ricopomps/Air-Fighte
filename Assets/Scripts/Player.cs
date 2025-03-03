@@ -16,7 +16,7 @@ public class Player : Plane
         Fuel -= FuelConsumptionRate * Time.deltaTime;
     }
 
-    public void AddFuel(int amount)
+    public void AddFuel(float amount)
     {
         Fuel += amount;
         if (Fuel > MaxFuel)

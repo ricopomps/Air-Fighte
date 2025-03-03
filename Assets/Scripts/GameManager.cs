@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public Player Player => player;
     Player player;
+    Boss Boss;
     int Score;
     float RestartTimer = 3f;
 
-    public bool IsGameOver() => player.GetHealthNormalized() <= 0 || player.GetFuelNormalized() <= 0;
+    public bool IsGameOver() => player.GetHealthNormalized() <= 0 || player.GetFuelNormalized() <= 0 || Boss.GetHealthNormalized() <= 0;
 
     void Awake()
     {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = PlayerTracker.Instance.GetTarget().GetComponent<Player>();
+        Boss = PlayerTracker.Instance.GetBoss().GetComponent<Boss>();
     }
 
     void Update()

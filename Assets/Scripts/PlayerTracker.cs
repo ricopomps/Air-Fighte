@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerTracker : MonoBehaviour
 {
     [SerializeField] GameObject Target;
+    [SerializeField] GameObject Boss;
     public static PlayerTracker Instance;
 
     private void Awake()
@@ -11,4 +12,5 @@ public class PlayerTracker : MonoBehaviour
     }
 
     public GameObject GetTarget() => Target;
+    public GameObject GetBoss() => Boss;
 }
