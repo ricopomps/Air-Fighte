@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
     [SerializeField] float MaxHealth = 100f;
     [SerializeField] GameObject ExplosionPrefab;
     float Health;
+    public bool IsBossDefeated = false;
 
     Collider BossCollider;
 
@@ -72,6 +73,7 @@ public class Boss : MonoBehaviour
     void BossDefeated()
     {
         Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+        IsBossDefeated = true;
         Destroy(gameObject);
     }
 

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     int Score;
     float RestartTimer = 3f;
 
-    public bool IsGameOver() => player.GetHealthNormalized() <= 0 || player.GetFuelNormalized() <= 0 || Boss.GetHealthNormalized() <= 0;
+    public bool IsGameOver() => player.GetHealthNormalized() <= 0 || player.GetFuelNormalized() <= 0 || Boss.IsBossDefeated;
 
     void Awake()
     {
