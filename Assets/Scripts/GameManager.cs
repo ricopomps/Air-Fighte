@@ -1,5 +1,4 @@
 using Eflatun.SceneReference;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -31,7 +30,7 @@ public class GameManager : MonoBehaviour
         if (IsGameOver())
         {
             RestartTimer -= Time.deltaTime;
-
+            DeactivatePlayer();
             if (!GameOverUI.activeSelf)
             {
                 GameOverUI.SetActive(true);
@@ -42,6 +41,13 @@ public class GameManager : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         }
+    }
+
+    void DeactivatePlayer()
+    {
+        Player.enabled = false;
+        PlayerTracker.Instance.GetTarget().GetComponent<PlayerController>().enabled = false;
+        PlayerTracker.Instance.GetTarget().GetComponent<PlayerWeapon>().enabled = false;
     }
 
     public void AddScore(int amount) =>

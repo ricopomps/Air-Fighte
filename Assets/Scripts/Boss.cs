@@ -31,7 +31,7 @@ public class Boss : MonoBehaviour
 
     void CheckStageComplete()
     {
-        if (Stages[CurrentStage].IsStageComplete())
+        if (CurrentStage >= 0 && CurrentStage < Stages.Count && Stages[CurrentStage].IsStageComplete())
         {
             AdvanceToNextStage();
         }

@@ -18,4 +18,4 @@ MonoBehaviour:
   ProjectileLifetime: 4
   ProjectilePrefab: {fileID: 8374126178039320378, guid: 9960aa5b119a4904ab9af6e80ceebed4, type: 3}
   MaxSpreadAngle: 45
-  NumberOfShots: 9
+  NumberOfShots: 3

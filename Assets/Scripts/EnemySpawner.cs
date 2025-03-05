@@ -19,7 +19,14 @@ public class EnemySpawner : MonoBehaviour
         Splines = new List<SplineContainer>(GetComponentsInChildren<SplineContainer>());
     }
 
-    void Start() => EnemyFactory = new EnemyFactory();
+    void Start()
+    {
+        if (Splines == null || Splines.Count == 0)
+        {
+            Splines = new List<SplineContainer>(GetComponentsInChildren<SplineContainer>());
+        }
+        EnemyFactory = new EnemyFactory();
+    }
 
     void Update()
     {

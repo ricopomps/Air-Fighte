@@ -25,6 +25,16 @@ public class PlayerController : MonoBehaviour
         Input = GetComponent<InputReader>();
     }
 
+    public void ActivateSpeedBoost()
+    {
+        Speed *= 2;
+    }
+
+    public void DeactivateSpeedBoost()
+    {
+        Speed /= 2;
+    }
+
     void Update()
     {
         TargetPosition += new Vector3(Input.Move.x, Input.Move.y, 0f) * (Speed * Time.deltaTime);

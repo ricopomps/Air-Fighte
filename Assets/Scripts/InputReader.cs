@@ -8,11 +8,13 @@ public class InputReader : MonoBehaviour
     InputAction MoveAction;
     InputAction FireAction;
     InputAction FirstAbilityAction;
+    InputAction SecondAbilityAction;
 
     public Vector2 Move => MoveAction.ReadValue<Vector2>();
 
     public bool Fire => FireAction.ReadValue<float>() > 0f;
     public bool FirstAbility => FirstAbilityAction.ReadValue<float>() > 0f;
+    public bool SecondAbility => SecondAbilityAction.ReadValue<float>() > 0f;
 
     void Start()
     {
@@ -20,5 +22,6 @@ public class InputReader : MonoBehaviour
         MoveAction = PlayerInput.actions["Move"];
         FireAction = PlayerInput.actions["Fire"];
         FirstAbilityAction = PlayerInput.actions["FirstAbility"];
+        SecondAbilityAction = PlayerInput.actions["SecondAbility"];
     }
 }

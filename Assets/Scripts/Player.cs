@@ -7,7 +7,9 @@ public class Player : Plane
     [SerializeField] float FuelConsumptionRate;
     [SerializeField] GameObject Shield;
     [SerializeField] Image ShieldImage;
+    [SerializeField] Image SpeedBoostImage;
     InputReader Input;
+    PlayerController Controller;
 
     float Fuel;
     private bool IsShieldActive = false;
@@ -16,18 +18,28 @@ public class Player : Plane
     float ShieldDuration = 3f;
     float ShieldActiveTimer;
 
+    private bool IsSpeedBoostActive = false;
+    float SpeedBoostTimer;
+    float SpeedBoostCooldown = 10f;
+    float SpeedBoostDuration = 3f;
+    float SpeedBoostActiveTimer;
+
+
     public float GetFuelNormalized() => Fuel / MaxFuel;
 
     void Start()
     {
         Fuel = MaxFuel;
         Input = GetComponent<InputReader>();
+        Controller = GetComponent<PlayerController>();
         ShieldTimer = ShieldCooldown;
+        SpeedBoostTimer = SpeedBoostCooldown;
     }
 
     void Update()
     {
         ShieldTimer += Time.deltaTime;
+        SpeedBoostTimer += Time.deltaTime;
         Fuel -= FuelConsumptionRate * Time.deltaTime;
 
         if (Input.FirstAbility && ShieldTimer >= ShieldCooldown)
@@ -44,7 +56,22 @@ public class Player : Plane
             }
         }
 
+        if (Input.SecondAbility && SpeedBoostTimer >= SpeedBoostCooldown)
+        {
+            ActivateSpeedBoost();
+        }
+
+        if (IsSpeedBoostActive)
+        {
+            SpeedBoostActiveTimer += Time.deltaTime;
+            if (SpeedBoostActiveTimer >= SpeedBoostDuration)
+            {
+                DeactivateSpeedBoost();
+            }
+        }
+
         ShieldImage.fillAmount = GetShieldFillAmount();
+        SpeedBoostImage.fillAmount = GetSpeedBoostFillAmount();
     }
 
     public void AddFuel(float amount)
@@ -82,6 +109,36 @@ public class Player : Plane
         if (IsShieldActive || ShieldTimer < ShieldCooldown)
         {
             return 1 - (ShieldTimer / ShieldCooldown);
+        }
+        return 0;
+    }
+
+    public void ActivateSpeedBoost()
+    {
+        IsSpeedBoostActive = true;
+        SpeedBoostActiveTimer = 0f;
+        SpeedBoostTimer = 0f;
+        Fuel -= GetSpeedBoostFuelConsumption();
+        SpeedBoostImage.fillAmount = 1;
+        Controller.ActivateSpeedBoost();
+    }
+
+    public float GetSpeedBoostFuelConsumption()
+    {
+        return MaxFuel * 0.2f;
+    }
+
+    public void DeactivateSpeedBoost()
+    {
+        IsSpeedBoostActive = false;
+        Controller.DeactivateSpeedBoost();
+    }
+
+    public float GetSpeedBoostFillAmount()
+    {
+        if (IsSpeedBoostActive || SpeedBoostTimer < SpeedBoostCooldown)
+        {
+            return 1 - (SpeedBoostTimer / SpeedBoostCooldown);
         }
         return 0;
     }
