@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Player : Plane
 {
+    [SerializeField] int InitialShots = 1;
     [SerializeField] float MaxFuel;
     [SerializeField] float FuelConsumptionRate;
     [SerializeField] GameObject Shield;
@@ -81,6 +82,16 @@ public class Player : Plane
         {
             Fuel = MaxFuel;
         }
+    }
+
+    public void AddShots(int amount)
+    {
+        InitialShots += amount;
+    }
+
+    public int GetShots()
+    {
+        return InitialShots;
     }
 
     public void ActivateShield()

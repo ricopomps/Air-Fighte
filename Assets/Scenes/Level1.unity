@@ -1287,6 +1287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyTypes:
   - {fileID: 11400000, guid: 3a220ceb4ef6cc74697be6f8a593c2e1, type: 2}
+  - {fileID: 11400000, guid: 3f4890e96386c484a987b32b8a7532f9, type: 2}
+  - {fileID: 11400000, guid: 3a220ceb4ef6cc74697be6f8a593c2e1, type: 2}
   MaxEnemies: 10
   SpawnInterval: 2
 --- !u!1 &760815384
@@ -3243,7 +3245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e7dbf8185f8e1409f4b3c967443a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponStrategy: {fileID: 11400000, guid: e49ed887fe4278646bbe983e093f0d38, type: 2}
+  WeaponStrategy: {fileID: 11400000, guid: 03f2699139bb0844fb8618635082f3cd, type: 2}
   FirePoint: {fileID: 204306058}
   Layer: 6
 --- !u!114 &1617615663
@@ -3259,6 +3261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 50
+  InitialShots: 1
   MaxFuel: 50
   FuelConsumptionRate: 1
   Shield: {fileID: 102870240}

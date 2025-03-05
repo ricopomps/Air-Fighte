@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f737858aecb49f64fa691f3a66e051d6, type: 3}
+  m_Name: BF109Yellow
+  m_EditorClassIdentifier: 
+  EnemyPrefab: {fileID: 429011540597766212, guid: 9f4c5244768667545b8af35a148af828, type: 3}
+  Speed: 2
+  ItemDrops:
+  - {fileID: 1497093625848849184, guid: a0853e9ae3402fe47b9d5fcb1f56a124, type: 3}
+  DropChance: 1
