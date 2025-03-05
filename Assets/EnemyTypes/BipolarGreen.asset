@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: BipolarGreen
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 429011540597766212, guid: 33c9b3043464344408b0df681735234c, type: 3}
-  WeaponPrefab: {fileID: 0}
   Speed: 2
+  ItemDrops:
+  - {fileID: 5126737657078696142, guid: 91e14fcdcac7e3c4e83679b0d3491ca7, type: 3}
+  - {fileID: 8693507085251648604, guid: e7a118b325acc4b44a65350211766ca0, type: 3}
+  DropChance: 0.5

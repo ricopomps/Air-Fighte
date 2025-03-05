@@ -9,16 +9,24 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] float SpawnRadius = 3f;
 
     CoroutineHandle SpawnCoroutine;
+    ItemFactory ItemFactory;
 
-    void Start() => SpawnCoroutine = Timing.RunCoroutine(SpawnItems());
+    void Start()
+    {
+        ItemFactory = new ItemFactory();
+        SpawnCoroutine = Timing.RunCoroutine(SpawnItems());
+    }
 
     IEnumerator<float> SpawnItems()
     {
         while (true)
         {
             yield return Timing.WaitForSeconds(SpawnInterval);
-            var item = Instantiate(ItemPrefabs[Random.Range(0, ItemPrefabs.Length)]);
-            item.transform.position = (transform.position + Random.insideUnitSphere * SpawnRadius).With(y: transform.position.y, z: 0);
+
+            Item itemPrefab = ItemPrefabs[Random.Range(0, ItemPrefabs.Length)];
+            Vector3 spawnPosition = (transform.position + Random.insideUnitSphere * SpawnRadius).With(y: transform.position.y, z: 0);
+
+            ItemFactory.CreateItem(itemPrefab, spawnPosition);
         }
     }
 }
