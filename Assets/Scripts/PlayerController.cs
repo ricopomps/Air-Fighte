@@ -7,8 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float LeanAngle = 15f;
     [SerializeField] float LeanSpeed = 5f;
 
-    [SerializeField] GameObject Model;
-
     [Header("Camera Bounds")]
     [SerializeField] Transform CameraFollow;
 

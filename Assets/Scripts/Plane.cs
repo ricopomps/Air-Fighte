@@ -7,7 +7,7 @@ public abstract class Plane : MonoBehaviour
 
     protected virtual void Awake() => Health = MaxHealth;
 
-    public void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount)
     {
         Health -= amount;
         if (Health <= 0)

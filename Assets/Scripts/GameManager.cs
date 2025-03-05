@@ -50,4 +50,5 @@ public class GameManager : MonoBehaviour
 
     public int GetScore() => Score;
 
+    public void StartBossFight() => PlayerTracker.Instance.GetBoss().SetActive(true);
 }

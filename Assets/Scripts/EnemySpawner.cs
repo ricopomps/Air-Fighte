@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     float SpawnTimer;
     int EnemiesSpawned;
+    bool HasBossFightStarted = false;
 
     void OnValidate()
     {
@@ -29,6 +30,14 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemy();
             SpawnTimer = 0f;
         }
+
+        if (!HasBossFightStarted && EnemiesSpawned >= MaxEnemies) StartBossFight();
+    }
+
+    void StartBossFight()
+    {
+        GameManager.Instance.StartBossFight();
+        HasBossFightStarted = true;
     }
 
     void SpawnEnemy()
