@@ -38,16 +38,28 @@ public class GameManager : MonoBehaviour
 
             if (RestartTimer <= 0)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+                GoToMainMenu();
             }
         }
     }
 
-    void DeactivatePlayer()
+    public void GoToMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public void DeactivatePlayer()
     {
         Player.enabled = false;
         PlayerTracker.Instance.GetTarget().GetComponent<PlayerController>().enabled = false;
         PlayerTracker.Instance.GetTarget().GetComponent<PlayerWeapon>().enabled = false;
+    }
+
+    public void ActivatePlayer()
+    {
+        Player.enabled = true;
+        PlayerTracker.Instance.GetTarget().GetComponent<PlayerController>().enabled = true;
+        PlayerTracker.Instance.GetTarget().GetComponent<PlayerWeapon>().enabled = true;
     }
 
     public void AddScore(int amount) =>

@@ -9,6 +9,8 @@ public abstract class Plane : MonoBehaviour
 
     public virtual void TakeDamage(int amount)
     {
+        if (Health <= 0) return;
+
         Health -= amount;
         if (Health <= 0)
         {

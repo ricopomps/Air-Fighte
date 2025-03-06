@@ -10,25 +10,21 @@ public class PlayerGun : WeaponStrategy
         float totalSpread = MaxSpreadAngle * 2;
         Player player = PlayerTracker.Instance.GetTarget().GetComponent<Player>();
 
-        float angleStep = totalSpread / (player.GetShots() - 1);  // Divide the total spread by the number of shots - 1
+        int shotCount = player.GetShots();
+        float angleStep = shotCount > 1 ? totalSpread / (shotCount - 1) : 0;
 
-        for (int i = 0; i < player.GetShots(); i++)
+        for (int i = 0; i < shotCount; i++)
         {
             var projectile = Instantiate(ProjectilePrefab, firePoint.position, firePoint.rotation);
             projectile.transform.SetParent(firePoint);
 
-            // Calculate the angle for this shot
-            float angle = -MaxSpreadAngle + (i * angleStep); // Distribute evenly across the range
-
-            // Rotate the projectile
-            projectile.transform.Rotate(0f, angle, 0f);  // Adjust rotation based on the calculated angle
+            float angle = shotCount > 1 ? -MaxSpreadAngle + (i * angleStep) : 0f;
+            projectile.transform.Rotate(0f, angle, 0f);
             projectile.layer = layer;
 
-            // Set the projectile speed
             var projectileComponent = projectile.GetComponent<Projectile>();
             projectileComponent.SetSpeed(ProjectileSpeed);
 
-            // Destroy the projectile after its lifetime expires
             Destroy(projectile, ProjectileLifetime);
         }
     }
