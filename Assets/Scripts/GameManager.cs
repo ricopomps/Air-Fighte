@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] SceneReference MainMenuScene;
     [SerializeField] GameObject GameOverUI;
+    [SerializeField] GameObject GameWonUI;
     public static GameManager Instance { get; private set; }
     public Player Player => player;
     Player player;
@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
     int Score;
     float RestartTimer = 3f;
 
-    public bool IsGameOver() => player.GetHealthNormalized() <= 0 || player.GetFuelNormalized() <= 0 || Boss.IsBossDefeated;
+    private bool PlayerLost() => player.GetHealthNormalized() <= 0 || player.GetFuelNormalized() <= 0;
+    public bool IsGameOver() => PlayerLost() || Boss.IsBossDefeated;
+    public bool IsGameWon() => !PlayerLost() && Boss.IsBossDefeated;
 
     void Awake()
     {
@@ -27,13 +29,27 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (IsGameOver())
+        if (PlayerLost())
         {
             RestartTimer -= Time.deltaTime;
             DeactivatePlayer();
             if (!GameOverUI.activeSelf)
             {
                 GameOverUI.SetActive(true);
+            }
+
+            if (RestartTimer <= 0)
+            {
+                GoToMainMenu();
+            }
+        }
+        else if (IsGameWon())
+        {
+            RestartTimer -= Time.deltaTime;
+            DeactivatePlayer();
+            if (!GameWonUI.activeSelf)
+            {
+                GameWonUI.SetActive(true);
             }
 
             if (RestartTimer <= 0)

@@ -6,6 +6,7 @@ public class Boss : MonoBehaviour
 {
     [SerializeField] float MaxHealth = 100f;
     [SerializeField] GameObject ExplosionPrefab;
+    [SerializeField] GameObject HealthBar;
     float Health;
     public bool IsBossDefeated = false;
 
@@ -22,9 +23,15 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
-        BossCollider.enabled = true;
+        SetBossColiderEnabled(true);
 
         InitializeStage();
+    }
+
+    void SetBossColiderEnabled(bool enabled)
+    {
+        BossCollider.enabled = enabled;
+        HealthBar.SetActive(enabled);
     }
 
     public float GetHealthNormalized() => Health / MaxHealth;
@@ -40,7 +47,7 @@ public class Boss : MonoBehaviour
     void AdvanceToNextStage()
     {
         CurrentStage++;
-        BossCollider.enabled = true;
+        SetBossColiderEnabled(true);
 
         if (CurrentStage < Stages.Count)
         {
@@ -57,7 +64,7 @@ public class Boss : MonoBehaviour
             system.OnSystemDestroyed.AddListener(CheckStageComplete);
         }
 
-        BossCollider.enabled = !Stages[CurrentStage].IsBossInvulnerable;
+        SetBossColiderEnabled(!Stages[CurrentStage].IsBossInvulnerable);
     }
 
     void OnCollisionEnter(Collision other)
